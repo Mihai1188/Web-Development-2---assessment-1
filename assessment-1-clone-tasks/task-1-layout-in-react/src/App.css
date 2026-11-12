@@ -1,0 +1,382 @@
+
+/*
+ * AI assistance: Responsive CSS layout developed with
+ * ChatGPT (OpenAI, 2026), including Grid, Flexbox and
+ * media query implementation.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;600;700&family=Protest+Guerrilla&display=swap');
+
+:root {
+  font-family: 'Josefin Sans', sans-serif;
+  color: #14181d;
+  background: #e9e9e9;
+  font-synthesis: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+h1, h2, h3, p {
+  margin-top: 0;
+}
+
+h1, h2 {
+  font-family: 'Protest Guerrilla', sans-serif;
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Header and navigation */
+
+.site-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+  padding: 50px 20px;
+}
+
+.logo {
+  display: block;
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  max-width: 900px;
+  gap: 20px;
+}
+
+.navigation a {
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Main content */
+
+.page-content {
+  max-width: 900px;
+  margin: 0 auto;
+  background: white;
+}
+
+.article {
+  padding: 50px;
+}
+
+.article h1 {
+  font-size: clamp(70px, 9vw, 110px);
+  line-height: 0.95;
+  margin-bottom: 8px;
+}
+
+.article .subtitle {
+  font-size: 48px;
+  margin-bottom: 25px;
+}
+
+.introduction {
+  font-size: 22px;
+  line-height: 1.45;
+  margin-bottom: 35px;
+}
+
+.article-columns {
+  column-count: 3;
+  column-gap: 25px;
+}
+
+.article-columns section {
+  display: contents;
+}
+
+.article-columns h2 {
+  font-size: 48px;
+  margin-bottom: 14px;
+  break-after: avoid;
+}
+
+.article-columns p {
+  margin-bottom: 20px;
+  line-height: 1.45;
+}
+
+/* Album artwork */
+
+.album-gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 0;
+}
+
+.album-gallery img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+}
+
+.album-gallery .featured-album {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+/* Author */
+
+.author-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 35px;
+  padding: 50px;
+  border-bottom: 2px solid #14181d;
+}
+
+.author-description {
+  flex: 1;
+  min-width: 0;
+}
+
+.author-description h2 {
+  font-size: 48px;
+  margin-bottom: 15px;
+}
+
+.author-description p {
+  margin-bottom: 0;
+}
+
+.author-photo {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.social-icons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-icons a,
+.social-icons img {
+  display: block;
+  width: 50px;
+  height: 50px;
+}
+
+.social-icons img {
+  object-fit: contain;
+}
+
+.author-section .social-icons {
+  flex-direction: column;
+}
+
+/* Comments */
+
+.comments {
+  padding: 50px;
+  background: #e9e9e9;
+}
+
+.comments h2 {
+  font-size: 48px;
+  margin-bottom: 25px;
+}
+
+.comment {
+  max-width: 650px;
+  margin-bottom: 25px;
+}
+
+.comment:last-child {
+  margin-bottom: 0;
+}
+
+.comment h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.comment p {
+  margin-bottom: 0;
+}
+
+/* Footer */
+
+.site-footer {
+  background: #14181d;
+  color: white;
+  text-align: center;
+  padding: 40px 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.site-footer .navigation {
+  max-width: 1000px;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+/* Tablet layout */
+
+@media (max-width: 850px) {
+  .site-header {
+    padding: 30px 20px;
+    gap: 30px;
+  }
+
+  .article {
+    padding: 35px;
+  }
+
+  .article h1 {
+    font-size: clamp(55px, 9vw, 85px);
+  }
+
+  .article .subtitle {
+    font-size: 40px;
+  }
+
+  .article-columns {
+    column-count: 2;
+  }
+
+  .author-section {
+    flex-wrap: wrap;
+    padding: 35px;
+  }
+
+  .author-section .social-icons {
+    flex-direction: row;
+  }
+}
+
+/* Mobile layout */
+
+@media (max-width: 600px) {
+  .site-header {
+    gap: 20px;
+    padding: 20px 15px 30px;
+  }
+
+  .logo {
+    width: 150px;
+    height: 150px;
+  }
+
+  .navigation {
+    gap: 12px;
+  }
+
+  .navigation a {
+    font-size: 13px;
+  }
+
+  .article {
+    padding: 25px 20px;
+  }
+
+  .article h1 {
+    font-size: clamp(48px, 12vw, 70px);
+  }
+
+  .article .subtitle {
+    font-size: 32px;
+  }
+
+  .introduction {
+    font-size: 19px;
+  }
+
+  .article-columns {
+    column-count: 1;
+  }
+
+  .article-columns h2 {
+    font-size: 40px;
+  }
+
+  .album-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .album-gallery .featured-album {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  .author-section {
+    flex-direction: column;
+    text-align: center;
+    padding: 30px 20px;
+    gap: 20px;
+  }
+
+  .author-description h2 {
+    font-size: 40px;
+  }
+
+  .author-photo {
+    width: 200px;
+    height: 200px;
+  }
+
+  .author-section .social-icons {
+    flex-direction: row;
+  }
+
+  .comments {
+    padding: 30px 20px;
+  }
+
+  .comments h2 {
+    font-size: 40px;
+  }
+
+  .site-footer {
+    padding: 35px 15px;
+  }
+
+  .site-footer .navigation {
+    flex-wrap: wrap;
+  }
+}

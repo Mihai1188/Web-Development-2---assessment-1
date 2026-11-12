@@ -1,0 +1,226 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Teko:wght@400;500;600&display=swap');
+
+/* Brand colours and spacing */
+:root {
+  --dark: #070410;
+  --purple: #231651;
+  --turquoise: #4dccbd;
+  --yellow: #eef36a;
+  --white: #ffffff;
+
+  --small-space: 16px;
+  --large-space: 16px;
+}
+
+/* General page styling */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--purple);
+  color: var(--dark);
+  font-family: 'Lato', sans-serif;
+}
+
+/* Website header */
+.site-header {
+  background-color: var(--dark);
+  padding: var(--small-space);
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--small-space);
+}
+
+.site-logo {
+  font-family: 'Teko', sans-serif;
+  font-size: 2em;
+  line-height: 1;
+  color: var(--white);
+  text-decoration: none;
+}
+
+.navigation {
+  display: none;
+  align-items: center;
+  gap: var(--large-space);
+}
+
+.navigation a {
+  font-size: 1em;
+  color: var(--white);
+  text-decoration: none;
+}
+
+.navigation a:hover {
+  color: var(--turquoise);
+}
+
+/* Buttons */
+.search-button,
+.watch-button {
+  font-family: 'Teko', sans-serif;
+  font-size: 2em;
+  line-height: 1;
+
+  padding: var(--small-space);
+  border: none;
+  border-radius: 16px;
+
+  background-color: var(--yellow);
+  color: var(--dark);
+
+  cursor: pointer;
+}
+
+.search-button:hover,
+.watch-button:hover {
+  background-color: var(--turquoise);
+}
+
+.search-button:focus-visible,
+.watch-button:focus-visible,
+.navigation a:focus-visible {
+  outline: 3px solid var(--turquoise);
+  outline-offset: 3px;
+}
+
+/* Main movie container */
+.movie-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+
+  padding: var(--large-space);
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--large-space);
+}
+
+/* Individual movie cards */
+.movie-card {
+  min-width: 0;
+  background-color: var(--white);
+
+  display: flex;
+  flex-direction: column;
+
+  box-shadow: 8px 8px 0 var(--dark);
+  overflow: hidden;
+}
+
+/* Movie posters */
+.movie-poster {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+/* Movie description and button */
+.movie-details {
+  padding: var(--small-space);
+
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: var(--small-space);
+}
+
+.movie-description {
+  margin: 0;
+  font-size: 1.5em;
+  line-height: 1.25;
+  flex: 1;
+}
+
+.watch-button {
+  width: 100%;
+}
+
+/* Tablet layout: 720px to 1023px */
+@media (min-width: 720px) {
+  :root {
+    --large-space: 32px;
+  }
+
+  .site-logo {
+    font-size: 3em;
+  }
+
+  .navigation {
+    display: flex;
+  }
+
+  .movie-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Desktop layout: 1024px and above */
+@media (min-width: 1024px) {
+  :root {
+    --large-space: 48px;
+  }
+
+  .movie-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Featured movie spans both columns */
+  .movie-1 {
+    grid-column: 1 / -1;
+  }
+
+  /* Show the full featured poster without cropping */
+  .movie-1 .movie-poster {
+    width: 100%;
+    height: 300px;
+    aspect-ratio: auto;
+    object-fit: contain;
+    background-color: var(--dark);
+  }
+
+  /* Featured movie description and button side by side */
+  .movie-1 .movie-details {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .movie-1 .watch-button {
+    width: 30%;
+    flex-shrink: 0;
+  }
+
+  /* Last three movies use horizontal cards */
+  .movie-4,
+  .movie-5,
+  .movie-6 {
+    grid-column: 1 / -1;
+    flex-direction: row;
+  }
+
+  .movie-4 .movie-poster,
+  .movie-5 .movie-poster,
+  .movie-6 .movie-poster {
+    width: 50%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+  }
+
+  .movie-4 .movie-details,
+  .movie-5 .movie-details,
+  .movie-6 .movie-details {
+    width: 50%;
+  }
+}
